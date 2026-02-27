@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="secret-page">
+      <div class="secret-card">
+        <div class="secret-icon">⚜️</div>
+        <h1>Become <span>Admin</span></h1>
+        <p>Enter the admin password to gain full access and moderation privileges.</p>
+
+        <% if (errors && errors.length > 0) { %>
+          <ul class="errors">
+            <% errors.forEach(error => { %>
+              <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        <% } %>
+
+        <form action="/admin" method="POST">
+          <div class="field">
+            <label for="password">Admin Password</label>
+            <input type="password" name="password" id="password">
+          </div>
+          <button type="submit">Become Admin</button>
+        </form>
+      </div>
+    </div>
+</body>
+</html>

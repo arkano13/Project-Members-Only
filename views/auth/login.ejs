@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="secret-page">
+      <div class="form-card">
+        <h1>Welcome <span>Back</span></h1>
+        <p class="form-subtitle">Sign in to your account</p>
+
+        <% if (errors && errors.length > 0) { %>
+          <ul class="errors">
+            <% errors.forEach(error => { %>
+              <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        <% } %>
+
+        <form action="/login" method="POST">
+          <div class="field">
+            <label for="username">Email</label>
+            <input type="email" name="username" id="username">
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+          </div>
+          <button type="submit">Sign In</button>
+        </form>
+
+        <p class="auth-link">Don't have an account? <a href="/register">Register</a></p>
+      </div>
+    </div>
+</body>
+</html>

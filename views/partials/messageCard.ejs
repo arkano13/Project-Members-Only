@@ -1,0 +1,19 @@
+<div class="message-card">
+  <h3 class="message-title"><%= message.title %></h3>
+  <p class="message-text"><%= message.text %></p>
+  <div class="message-footer">
+    <div class="message-meta">
+      <% if (locals.user && user.is_member) { %>
+        <span class="author">✦ <%= message.username %></span>
+        <span class="date"><%= new Date(message.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></span>
+      <% } else { %>
+        <span class="hidden-meta">— author hidden from non-members —</span>
+      <% } %>
+    </div>
+    <% if (locals.user && user.is_admin) { %>
+      <form action="/<%= message.id %>/delete" method="POST">
+        <button type="submit" class="btn-delete">Delete</button>
+      </form>
+    <% } %>
+  </div>
+</div>

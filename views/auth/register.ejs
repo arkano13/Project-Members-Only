@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="secret-page">
+      <div class="form-card">
+        <h1>Create <span>Account</span></h1>
+        <p class="form-subtitle">Join the members club</p>
+
+        <% if (errors && errors.length > 0) { %>
+          <ul class="errors">
+            <% errors.forEach(error => { %>
+              <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        <% } %>
+
+        <form action="/register" method="POST">
+          <div class="field">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name">
+          </div>
+          <div class="field">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name">
+          </div>
+          <div class="field">
+            <label for="username">Email</label>
+            <input type="email" name="username" id="username">
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+          </div>
+          <div class="field">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword">
+          </div>
+          <button type="submit">Create Account</button>
+        </form>
+
+        <p class="auth-link">Already have an account? <a href="/login">Login</a></p>
+      </div>
+    </div>
+</body>
+</html>

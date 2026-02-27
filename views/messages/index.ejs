@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="page">
+      <div class="board-header">
+        <div>
+          <p class="page-label">Community</p>
+          <h1>Message <span>Board</span></h1>
+        </div>
+        <% if (locals.user) { %>
+          <a href="/new" class="btn-new-message">+ New Message</a>
+        <% } %>
+      </div>
+
+      <% if (messages.length === 0) { %>
+        <div class="empty-state">
+          <div class="empty-icon">✉</div>
+          <p>No messages yet. Be the first to post.</p>
+        </div>
+      <% } else { %>
+        <% messages.forEach(message => { %>
+          <%- include('../partials/messageCard', { message }) %>
+        <% }); %>
+      <% } %>
+    </div>
+</body>
+</html>

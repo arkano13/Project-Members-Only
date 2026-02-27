@@ -1,0 +1,18 @@
+<nav>
+  <a href="/" class="brand">Members Club</a>
+  <ul class="nav-links">
+    <% if (locals.user) { %>
+      <li><a href="/new">New Message</a></li>
+      <% if (!user.is_member) { %>
+        <li><a href="/join">Join Club</a></li>
+      <% } %>
+      <% if (locals.user && user.is_member && !user.is_admin) { %>
+        <li><a href="/admin">Become Admin</a></li>
+      <% } %>
+      <li><a href="/logout">Logout</a></li>
+    <% } else { %>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+    <% } %>
+  </ul>
+</nav>
