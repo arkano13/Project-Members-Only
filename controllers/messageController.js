@@ -18,8 +18,6 @@ const createMessageGet = (req, res) => {
 };
 
 const createMessagePost = async (req, res) => {
-    console.log(req.body); // agrega esto
-        console.log(req.user); // agrega esto
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.render("messages/new", {
